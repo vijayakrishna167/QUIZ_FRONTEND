@@ -1,0 +1,53 @@
+/* Quiz Page Styles */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff8c00, #ff2d55);
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.question-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-count {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.answer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answer-button {
+    background-color: #fff;
+    color: #ff2d55;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.answer-button:hover {
+    background-color: #ff2d55;
+    color: #fff;
+}
+
+.score-section {
+    font-size: 2rem;
+    font-weight: bold;
+}

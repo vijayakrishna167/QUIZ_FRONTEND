@@ -1,0 +1,40 @@
+/* User Home Page Styles */
+.user-home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #ddd;
+}
+
+.take-quiz-button {
+    background-color: #fff;
+    color: #4a00e0;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.take-quiz-button:hover {
+    background-color: #4a00e0;
+    color: #fff;
+}

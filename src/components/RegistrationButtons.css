@@ -1,0 +1,55 @@
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.container-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.title1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.reg-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.admin-button:hover {
+    background-color: #0056b3;
+}
+
+.user-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.user-button:hover {
+    background-color: #218838;
+}

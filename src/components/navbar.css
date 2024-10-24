@@ -1,0 +1,67 @@
+/* Navbar Styles */
+.navsec {
+    background-color: #333; /* Dark background */
+    padding: 10px 20px; /* Padding around the navbar */
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Ensure space between logo and links */
+}
+
+/* Style for the logo image */
+.navsec img {
+    height: 100px; /* Adjust the height as per your preference */
+    width: auto; /* Keep aspect ratio */
+    margin-right: 20px; /* Space between logo and nav items */
+    border-radius: 50px;
+}
+
+/* Navbar List Styles */
+.navsec ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox layout for horizontal menu */
+    justify-content: center; /* Align links to the left */
+    align-items: center; /* Center items vertically */
+    /* gap: 100px; */
+     /* Space between links */
+}
+
+/* Individual list item */
+.navsec ul li {
+    margin: 0; /* Reset margin, gap is handled by 'gap' property */
+}
+
+/* Style the Link component inside li */
+.navsec ul li .nav-link {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 26px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-right: 100px;
+     /* Smooth hover effect */
+}
+
+/* Hover effect on links */
+.navsec ul li .nav-link:hover {
+    color: #ff6347; /* Change color to tomato on hover */
+}
+
+/* For small screens, stack the menu vertically */
+@media screen and (max-width: 768px) {
+    .navsec {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+    }
+
+    .navsec ul {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center;
+        gap: 15px; /* Adjust gap for smaller screens */
+    }
+    
+    .navsec img {
+        margin-bottom: 20px; /* Space between logo and nav items on small screens */
+    }
+}
