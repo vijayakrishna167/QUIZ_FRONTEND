@@ -1,9 +1,12 @@
+// frontend/src/components/UserHome.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './UserHome.css';
 
-const UserHome = ({ username }) => {
+const UserHome = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const username = location.state?.username || 'User';
 
     const handleTakeQuizClick = () => {
         navigate('/quiz');

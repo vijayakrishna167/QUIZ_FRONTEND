@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
-import './Quiz.css'
+import React, { useState, useEffect } from 'react';
+import './Quiz.css';
 
-const Quiz = () => {
-    const questions = [
-        {
-            questionText: 'What is the capital of France?',
-            answerOptions: [
-                { answerText: 'New York', isCorrect: false },
-                { answerText: 'London', isCorrect: false },
-                { answerText: 'Paris', isCorrect: true },
-                { answerText: 'Berlin', isCorrect: false },
-            ],
-        },
-        {
-            questionText: 'Who is the CEO of Tesla?',
-            answerOptions: [
-                { answerText: 'Jeff Bezos', isCorrect: false },
-                { answerText: 'Elon Musk', isCorrect: true },
-                { answerText: 'Bill Gates', isCorrect: false },
-                { answerText: 'Tony Stark', isCorrect: false },
-            ],
-        },
-        // Add more questions as needed
-    ];
-
+const Quiz = ({ username }) => {
+    const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
 
+    useEffect(() => {
+        const fetchQuestions = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/quiz/questions');
+                const data = await response.json();
+                setQuestions(data);
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+            }
+        };
+        fetchQuestions();
+    }, []);
+
+    useEffect(() => {
+        if (showScore) {
+            console.log('Submitting score:', { username, score }); // Log data before submitting
+            if (!username || score === undefined) {
+                console.error('Missing username or score, cannot submit.'); // Check for undefined values
+                return;
+            }
+            const submitScore = async () => {
+                try {
+                    const response = await fetch('http://localhost:5000/api/user/submit-score', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, score }),
+                    });
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Failed to submit score');
+                    }
+                    console.log('Score submitted successfully:', data);
+                } catch (error) {
+                    console.error('Error submitting score:', error.message);
+                }
+            };
+            submitScore();
+        }
+    }, [showScore, username, score]);
+
     const handleAnswerClick = (isCorrect) => {
         if (isCorrect) {
-            setScore(score + 1);
+            setScore((prevScore) => prevScore + 1);
         }
 
         const nextQuestion = currentQuestion + 1;
@@ -48,25 +69,29 @@ const Quiz = () => {
                     You scored {score} out of {questions.length}
                 </div>
             ) : (
-                <>
-                    <div className="question-section">
-                        <div className="question-count">
-                            <span>Question {currentQuestion + 1}</span>/{questions.length}
+                questions.length > 0 && (
+                    <>
+                        <div className="question-section">
+                            <div className="question-count">
+                                <span>Question {currentQuestion + 1}</span>/{questions.length}
+                            </div>
+                            <div className="question-text">
+                                {questions[currentQuestion].question}
+                            </div>
                         </div>
-                        <div className="question-text">{questions[currentQuestion].questionText}</div>
-                    </div>
-                    <div className="answer-section">
-                        {questions[currentQuestion].answerOptions.map((option, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handleAnswerClick(option.isCorrect)}
-                                className="answer-button"
-                            >
-                                {option.answerText}
-                            </button>
-                        ))}
-                    </div>
-                </>
+                        <div className="answer-section">
+                            {questions[currentQuestion].options.map((option, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleAnswerClick(option === questions[currentQuestion].correctAnswer)}
+                                    className="answer-button"
+                                >
+                                    {option}
+                                </button>
+                            ))}
+                        </div>
+                    </>
+                )
             )}
         </div>
     );
