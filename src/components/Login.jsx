@@ -16,24 +16,24 @@ const Login = ({ setUsername }) => { // Accept setUsername as a prop
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const route = isAdmin ? 'admin' : 'user'; // Select route based on isAdmin state
-    
+        const route = isAdmin ? 'admin' : 'user';
+      
         try {
             const response = await fetch(`http://localhost:5000/api/${route}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user),
             });
-    
+      
             const data = await response.json();
-    
+            console.log('Response Status:', response.status); // Log response status
+            console.log('Response Data:', data); // Log response data
+      
             if (response.ok) {
                 setMessage('Login successful!');
-                console.log(data); // Log the response data to see the username
+                setUsername(data.username); // Confirm data.username is being set
                 
-                // Set the username in the parent component's state
-                setUsername(data.username); // Ensure data.username is set correctly
-    
+                // Navigate based on user type
                 if (data.isAdmin) {
                     navigate('/admin', { state: { username: data.username } });
                 } else {
@@ -43,12 +43,11 @@ const Login = ({ setUsername }) => { // Accept setUsername as a prop
                 setMessage(`Error: ${data.message}`);
             }
         } catch (error) {
-            setMessage('Error during login');
-            console.error(error);
+            setMessage('Network error during login');
+            console.error('Fetch error:', error);
         }
     };
-    
-
+      
     return (
         <div className="login-page">
             <form className="login-form" onSubmit={handleSubmit}>

@@ -24,7 +24,8 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/login" element={<Login setUsername={setUsername} />} /> {/* Pass setUsername here */}
+                <Route path="/login" element={<Login setUsername={setUsername} />} />
+
                 <Route path="/register" element={<Register />} />
                 <Route path="/admin-register" element={<AdminRegistration />} />
                 <Route path="/user-register" element={<UserRegistration />} />
