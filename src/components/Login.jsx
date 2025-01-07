@@ -53,8 +53,8 @@ const Login = ({ setUsername }) => { // Accept setUsername as a prop
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="form-title">Login</h2>
                 <div className="toggle-container">
-                    <button type="button" className={`toggle-button ${isAdmin ? 'active' : ''}`} onClick={() => setIsAdmin(true)}>Admin</button>
-                    <button type="button" className={`toggle-button ${!isAdmin ? 'active' : ''}`} onClick={() => setIsAdmin(false)}>User</button>
+                    <button type="button" className={`toggle-button ${isAdmin ? 'active' : ''}`}  id='form-button' onClick={() => setIsAdmin(true)}>Admin</button>
+                    <button type="button" className={`toggle-button ${!isAdmin ? 'active' : ''}`} id='form-button' onClick={() => setIsAdmin(false)}>User</button>
                 </div>
                 <input
                     className="input-field"

@@ -1,0 +1,50 @@
+/* Container for the student marks page */
+.student-marks-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading style */
+  .student-marks-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  /* Table header styling */
+  th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Table data cell styling */
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Hover effect for table rows */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Optional: Adding a border to the table */
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
